@@ -7,6 +7,7 @@ package ParaFiles; /**
 import java.util.concurrent.ConcurrentHashMap;
 import ParaFiles.ParaStructure.LineNode;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.nio.file.Files;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class PFile {
     private final int numThreadsAvail = Runtime.getRuntime().availableProcessors();
     private final int hashLoadFactor = 16; //16 is the default
     private int hashInitCap = 10; //number of bins to start with, defaults to # of lines in an existing pfile
-    private final String context = "/context.sd";
+    private final String context = "/context.txt";
     private final String chunks = "/lineChunks/";
     private File contextFile = null;
     //Line storage
@@ -30,8 +31,10 @@ public class PFile {
 
 
     private void initNewFile() throws IOException{
+        topLevelDir.mkdir();
         chunksDir.mkdir();
         contextFile.createNewFile();
+
     }
 
     //sets up the internal structure
@@ -45,13 +48,14 @@ public class PFile {
     public PFile(String fileName) throws IOException {
         topLevelDir = new File(fileName);
         //check to see if this is an exist file (cough folder)
+        contextFile = new File(fileName + context );
+        chunksDir = new File(fileName + chunks);
         if(!topLevelDir.isDirectory()){
             //If it's not we need to init the file
             initNewFile();
         }
         //Now that we know we have something that may be our file let's check
-        contextFile = new File(fileName + context );
-        chunksDir = new File(fileName + chunksDir);
+
         if(!contextFile.isFile()){
             //Not our file, throw a generic exception
             throw new IOException();
@@ -81,7 +85,7 @@ public class PFile {
     }
 
     //writes to the end of the file
-    public void write(String content) {
+    public int write(String content) {
         int newLineNumber = lineCount.getAndIncrement();
         //give the lines absolute paths, hopefully, it makes the OS happy and speedy
         LineNode newNode = new LineNode(newLineNumber, chunksDir.getAbsolutePath());
@@ -89,6 +93,7 @@ public class PFile {
         newNode.write(content);
         //add it to the hash map so all the other threads can see it.
         fileMap.put(newLineNumber, newNode);
+        return newLineNumber;
     }
 
     //writes to specific line

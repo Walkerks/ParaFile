@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by Walker on 12/3/2016.
  */
 public class LineNode {
-    AtomicReference<FileDOD> currFile;
+    AtomicReference<FileDOD> currFile = new AtomicReference<FileDOD>(null);
     ConcurrentLinkedQueue<FileDOD> writeQueue;
     Lock writeLock = new ReentrantLock();
     Condition writeCondition = writeLock.newCondition();
@@ -38,25 +38,25 @@ public class LineNode {
         UUID uuid = UUID.randomUUID();
         String lineName = uuid.toString();
         //Create the new file
-        FileDOD newFile = new FileDOD(fileLocation + lineName);
+        FileDOD newFile = new FileDOD(fileLocation + "/" + lineName);
         //put myself in the queue to establish a write order
         writeQueue.add(newFile);
         //write to the file
         newFile.write(contents);
         //Wait until this thread is the first in the queue
-        while(newFile != writeQueue.peek()) {
-            try {
-                writeCondition.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        synchronized (currFile) {
+            while (newFile != writeQueue.peek()) {
+                try {
+                    currFile.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+            currFile.set(newFile);
+            writeQueue.poll();
+            //tell all the other threads you're done
+            currFile.notifyAll();
         }
-        currFile.set(newFile);
-        writeQueue.poll();
-        //tell all the other threads you're done
-        writeCondition.notifyAll();
-
-
     }
 
     //Reads the current file
