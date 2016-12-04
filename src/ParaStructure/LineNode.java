@@ -1,8 +1,7 @@
 package ParaStructure;
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
+import java.util.concurrent.atomic.AtomicReference;
 import FileAccess.FileDOD;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -18,29 +17,28 @@ public class LineNode {
     ConcurrentLinkedQueue<FileDOD> writeQueue;
     Lock writeLock = new ReentrantLock();
     Condition writeCondition = writeLock.newCondition();
+    String fileLocation = null;
     //FileDOD fileRef = null;
     int lineNum;
 
-    LineNode(int lineNum, String writeLocation, String readLocation){
+    LineNode(int lineNum, String fileLocation){
         this.lineNum = lineNum;
         writeQueue = new ConcurrentLinkedQueue<FileDOD>();
-
+        //Path to write location
+        this.fileLocation = fileLocation;
     }
 
-    /*
-    private void changeCurrFile(){
-
-        FileDOD newFile = writeQueue.poll();
-        currFile.set(newFile);
-
-    }*/
+    public String getCurrentFileLocation() {
+        FileDOD copyFileRef = currFile.get();
+        return copyFileRef.getFileName();
+    }
 
     public void write(String contents){
         //create a new file name
         UUID uuid = UUID.randomUUID();
         String lineName = uuid.toString();
         //Create the new file
-        FileDOD newFile = new FileDOD(lineName);
+        FileDOD newFile = new FileDOD(fileLocation + lineName);
         //put myself in the queue to establish a write order
         writeQueue.add(newFile);
         //write to the file
