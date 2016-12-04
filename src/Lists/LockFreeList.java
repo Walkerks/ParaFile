@@ -1,5 +1,5 @@
-/*
- * LockFreeList.java
+package Lists;/*
+ * Lists.LockFreeList.java
  *
  * Created on January 4, 2006, 2:41 PM
  *
