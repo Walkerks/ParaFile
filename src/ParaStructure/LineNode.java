@@ -8,7 +8,7 @@ import FileAccess.FileDOD;
  * Created by Walker on 12/3/2016.
  */
 public class LineNode {
-    //AtomicReference<FileDOD> currFile;
+    AtomicReference<FileDOD> currFile;
     //FileDOD fileRef = null;
     AtomicInteger verisonNumber;
     int lineNum;
