@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="511a80de-ac00-41ee-a676-0c4c5793c159" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PFile.java" afterPath="$PROJECT_DIR$/src/PFile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParaStructure/LineNode.java" afterPath="$PROJECT_DIR$/src/ParaStructure/LineNode.java" />
     </list>
     <ignored path="ParaFile.iws" />
@@ -39,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineNode.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LineNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParaStructure/LineNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="254">
+              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PFile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state relative-caret-position="286">
+              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -111,8 +110,8 @@
         <option value="$PROJECT_DIR$/testFile.txt" />
         <option value="$PROJECT_DIR$/src/tests/FileDODTest.groovy" />
         <option value="$PROJECT_DIR$/src/FileAccess/FileDOD.java" />
-        <option value="$PROJECT_DIR$/src/ParaStructure/LineNode.java" />
         <option value="$PROJECT_DIR$/src/PFile.java" />
+        <option value="$PROJECT_DIR$/src/ParaStructure/LineNode.java" />
       </list>
     </option>
   </component>
@@ -706,22 +705,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParaStructure/LineNode.java">
+    <entry file="file://$PROJECT_DIR$/src/PFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="286">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PFile.java">
+    <entry file="file://$PROJECT_DIR$/src/ParaStructure/LineNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        <state relative-caret-position="254">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
