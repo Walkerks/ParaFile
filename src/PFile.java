@@ -3,9 +3,7 @@
  * Modified by Walker Sensabaough on 12/4/2016
  */
 
-import Lists.LockFreeList;
 
-import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 import ParaStructure.LineNode;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,17 +16,17 @@ public class PFile {
 
     //LockFreeList<Integer> filename = new LockFreeList<>();
     private AtomicInteger lineCount = null;
-    ConcurrentHashMap<Integer, LineNode> fileMap = null;
+    private ConcurrentHashMap<Integer, LineNode> fileMap = null;
     private final int numThreadsAvail = Runtime.getRuntime().availableProcessors();
     private final int hashLoadFactor = 16; //16 is the default
     private int hashInitCap = 10; //number of bins to start with, defaults to # of lines in an existing pfile
     private final String context = "/context.sd";
     private final String chunks = "/lineChunks/";
-    File contextFile = null;
+    private File contextFile = null;
     //Line storage
-    File chunksDir = null;
+    private File chunksDir = null;
     //The file seen by the user
-    File topLevelDir = null;
+    private File topLevelDir = null;
 
 
     private void initNewFile() throws IOException{
@@ -84,7 +82,13 @@ public class PFile {
 
     //writes to the end of the file
     public void write(String content) {
-
+        int newLineNumber = lineCount.getAndIncrement();
+        //give the lines absolute paths, hopefully, it makes the OS happy and speedy
+        LineNode newNode = new LineNode(newLineNumber, chunksDir.getAbsolutePath());
+        //write the content
+        newNode.write(content);
+        //add it to the hash map so all the other threads can see it.
+        fileMap.put(newLineNumber, newNode);
     }
 
     //writes to specific line

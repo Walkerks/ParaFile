@@ -21,7 +21,7 @@ public class LineNode {
     //FileDOD fileRef = null;
     int lineNum;
 
-    LineNode(int lineNum, String fileLocation){
+    public LineNode(int lineNum, String fileLocation){
         this.lineNum = lineNum;
         writeQueue = new ConcurrentLinkedQueue<FileDOD>();
         //Path to write location

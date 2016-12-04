@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="511a80de-ac00-41ee-a676-0c4c5793c159" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PFile.java" afterPath="$PROJECT_DIR$/src/PFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParaStructure/LineNode.java" afterPath="$PROJECT_DIR$/src/ParaStructure/LineNode.java" />
     </list>
     <ignored path="ParaFile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +41,8 @@
       <file leaf-file-name="LineNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParaStructure/LineNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="-308">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,13 +53,13 @@
       <file leaf-file-name="PFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+            <state relative-caret-position="716">
+              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#2273#2274#0" expanded="true" />
-                <element signature="e#2300#2301#0" expanded="true" />
+                <element signature="e#2248#2249#0" expanded="true" />
+                <element signature="e#2275#2276#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,9 +122,9 @@
         <option value="$PROJECT_DIR$/testFile.txt" />
         <option value="$PROJECT_DIR$/src/tests/FileDODTest.groovy" />
         <option value="$PROJECT_DIR$/src/FileAccess/FileDOD.java" />
-        <option value="$PROJECT_DIR$/src/ParaStructure/LineNode.java" />
         <option value="$PROJECT_DIR$/src/Lists/PFile.java" />
         <option value="$PROJECT_DIR$/src/Lists/LockFreeList.java" />
+        <option value="$PROJECT_DIR$/src/ParaStructure/LineNode.java" />
         <option value="$PROJECT_DIR$/src/PFile.java" />
       </list>
     </option>
@@ -724,16 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParaStructure/LineNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lists/LockFreeList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2042">
@@ -762,15 +753,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParaStructure/LineNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-308">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+        <state relative-caret-position="716">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#2273#2274#0" expanded="true" />
-            <element signature="e#2300#2301#0" expanded="true" />
+            <element signature="e#2248#2249#0" expanded="true" />
+            <element signature="e#2275#2276#0" expanded="true" />
           </folding>
         </state>
       </provider>
