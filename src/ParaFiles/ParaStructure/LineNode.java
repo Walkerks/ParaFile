@@ -1,8 +1,8 @@
-package ParaStructure;
+package ParaFiles.ParaStructure;
 
 
 import java.util.concurrent.atomic.AtomicReference;
-import FileAccess.FileDOD;
+import ParaFiles.FileAccess.FileDOD;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Condition;

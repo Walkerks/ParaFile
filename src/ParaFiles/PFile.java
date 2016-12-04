@@ -1,11 +1,11 @@
-/**
+package ParaFiles; /**
  * Created by Austin on 12/3/2016.
  * Modified by Walker Sensabaough on 12/4/2016
  */
 
 
 import java.util.concurrent.ConcurrentHashMap;
-import ParaStructure.LineNode;
+import ParaFiles.ParaStructure.LineNode;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import java.io.File;

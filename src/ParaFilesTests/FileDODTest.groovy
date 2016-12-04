@@ -1,6 +1,5 @@
-package tests
-import FileAccess.FileDOD;
-import java.io.File;
+package ParaFilesTests
+import ParaFiles.FileAccess.FileDOD
 
 /**
  * Created by Walker on 12/3/2016.
