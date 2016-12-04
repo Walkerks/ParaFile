@@ -13,7 +13,7 @@ public class FileDOD {
     File myFile;
     boolean deleteFileOnGarbage = false;
     //Opens or creates a new file
-    FileDOD(String fileName){
+    public FileDOD(String fileName){
         myFile = new File(fileName);
         if(!myFile.exists()){
             try {
@@ -22,6 +22,10 @@ public class FileDOD {
                 e.printStackTrace();
             }
         }
+
+    }
+
+    public void moveToRead(){
 
     }
     //read the file from disk
@@ -54,6 +58,10 @@ public class FileDOD {
         deleteFileOnGarbage = true;
     }
 
+    public String getFileName(){
+        return myFile.getName();
+    }
+
     protected void finalize() throws Throwable {
         try {
             //If the file is marked to delete
@@ -64,6 +72,4 @@ public class FileDOD {
             super.finalize();
         }
     }
-
-
 }
