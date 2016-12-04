@@ -34,6 +34,7 @@ public class LineNode {
     }
 
     public void write(String contents){
+        FileDOD old = null;
         //create a new file name
         UUID uuid = UUID.randomUUID();
         String lineName = uuid.toString();
@@ -52,10 +53,15 @@ public class LineNode {
                     e.printStackTrace();
                 }
             }
+            old = currFile.get();
             currFile.set(newFile);
             writeQueue.poll();
             //tell all the other threads you're done
             currFile.notifyAll();
+        }
+        //mark the old file to delete itself onces all threads no longer have reference
+        if(old != null){
+            old.delOnGarb();
         }
     }
 

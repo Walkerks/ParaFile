@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="511a80de-ac00-41ee-a676-0c4c5793c159" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParaFileBenchmarks/PFileBench.java" afterPath="$PROJECT_DIR$/src/ParaFileBenchmarks/PFileBench.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParaFiles/PFile.java" afterPath="$PROJECT_DIR$/src/ParaFiles/PFile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParaFiles/ParaStructure/LineNode.java" afterPath="$PROJECT_DIR$/src/ParaFiles/ParaStructure/LineNode.java" />
     </list>
@@ -41,8 +42,8 @@
       <file leaf-file-name="LineNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParaFiles/ParaStructure/LineNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="-797">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#459#468#0" expanded="true" />
@@ -54,12 +55,12 @@
       <file leaf-file-name="PFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParaFiles/PFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1782">
-              <caret line="105" column="9" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+            <state relative-caret-position="369">
+              <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2334#2335#0" expanded="true" />
-                <element signature="e#2361#2362#0" expanded="true" />
+                <element signature="e#2820#2821#0" expanded="true" />
+                <element signature="e#2847#2848#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,8 +79,8 @@
       <file leaf-file-name="PFileBench.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParaFileBenchmarks/PFileBench.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="264">
+              <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,8 +152,8 @@
         <option value="$PROJECT_DIR$/src/FileAccess/PFileTest.groovy" />
         <option value="$PROJECT_DIR$/src/tests/PFileTest.groovy" />
         <option value="$PROJECT_DIR$/src/ParaFilesTests/PFileTest.groovy" />
-        <option value="$PROJECT_DIR$/src/ParaFileBenchmarks/PFileBench.java" />
         <option value="$PROJECT_DIR$/src/ParaFiles/ParaStructure/LineNode.java" />
+        <option value="$PROJECT_DIR$/src/ParaFileBenchmarks/PFileBench.java" />
         <option value="$PROJECT_DIR$/src/ParaFiles/PFile.java" />
       </list>
     </option>
@@ -221,6 +222,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaFile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaFile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaFiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaFile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaFile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaFiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParaStructure" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -648,14 +689,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ParaFiles/ParaStructure/LineNode.java</url>
-          <line>59</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
@@ -745,14 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParaFilesTests/PFileTest.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParaFiles/FileAccess/FileDOD.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -767,18 +792,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParaFileBenchmarks/PFileBench.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParaFilesTests/PFileTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParaFiles/ParaStructure/LineNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="-797">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#459#468#0" expanded="true" />
@@ -788,12 +821,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParaFiles/PFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
-          <caret line="105" column="9" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+        <state relative-caret-position="369">
+          <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2334#2335#0" expanded="true" />
-            <element signature="e#2361#2362#0" expanded="true" />
+            <element signature="e#2820#2821#0" expanded="true" />
+            <element signature="e#2847#2848#0" expanded="true" />
           </folding>
         </state>
       </provider>

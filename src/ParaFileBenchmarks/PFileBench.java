@@ -18,6 +18,7 @@ public class PFileBench {
                 e.printStackTrace();
         }
         file.write("doo, do, do");
+        file.close();
 
     }
 }
