@@ -4,16 +4,20 @@
  */
 
 import Lists.LockFreeList;
+
+import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 import ParaStructure.LineNode;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import java.io.File;
 import java.io.IOException;
 
 
-public class PFile<T> {
+public class PFile {
 
     //LockFreeList<Integer> filename = new LockFreeList<>();
+    private AtomicInteger lineCount = null;
     ConcurrentHashMap<Integer, LineNode> fileMap = null;
     private final int numThreadsAvail = Runtime.getRuntime().availableProcessors();
     private final int hashLoadFactor = 16; //16 is the default
@@ -36,6 +40,8 @@ public class PFile<T> {
     private void setup(){
         //read in the context File
         fileMap = new ConcurrentHashMap<>(hashInitCap, hashLoadFactor, numThreadsAvail);
+        //TODO: lines should be read in from the conxt file
+        lineCount = new AtomicInteger(0);
     }
 
     public PFile(String fileName) throws IOException {
@@ -63,20 +69,35 @@ public class PFile<T> {
 
     }
 
-    public void read(T content) {
+    //reads the entire list
+    public String read() {
+        return null;
+    }
+
+    //reads a specific line
+    public String read(int lineNumber) {
+        //get the node with key lineNumber
+        LineNode lineN = fileMap.get(lineNumber);
+        //read the line
+        return lineN.read();
+    }
+
+    //writes to the end of the file
+    public void write(String content) {
 
     }
 
-    public void read(T content, int lineNumber) {
-
-    }
-
-    public void write(T content) {
-
-    }
-
-    public void write(T content, int lineNumber) {
-
+    //writes to specific line
+    public void write(String content, int lineNumber) throws IndexOutOfBoundsException {
+        //get the number of lines we currently have
+        int lineNum = lineCount.get();
+        //check to see if their line number is above the number of lines we have
+        if(lineNumber > lineNum){
+            throw new IndexOutOfBoundsException();
+        }
+        //otherwise get the line
+        LineNode lineToUpdate = fileMap.get(lineNumber);
+        lineToUpdate.write(content);
 
     }
 }
