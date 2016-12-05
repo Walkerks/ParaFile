@@ -13,12 +13,19 @@ public class PFileBench {
         PFile file = null;
         try {
             //create our PFile
-            file = new PFile("C:/Users/Walker/GoogleDrive/VT/Third Year/test");
+            file = new PFile("C:/Users/Walker/GoogleDrive/VT/Third Year/test5");
         } catch (IOException e) {
                 e.printStackTrace();
         }
-        file.write("doo, do, do");
+        for(int i = 0; i < 1; i++){
+            file.write("doo, do, do");
+        }
+        for(int i = 0; i < 1; i++){
+            file.write("doo, do, do", i);
+        }
+
         file.close();
+        System.gc();
 
     }
 }

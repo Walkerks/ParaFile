@@ -13,15 +13,25 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by Walker on 12/3/2016.
  */
 public class LineNode {
-    AtomicReference<FileDOD> currFile = new AtomicReference<FileDOD>(null);
-    ConcurrentLinkedQueue<FileDOD> writeQueue;
-    Lock writeLock = new ReentrantLock();
-    Condition writeCondition = writeLock.newCondition();
-    String fileLocation = null;
+    private final AtomicReference<FileDOD> currFile;
+    private ConcurrentLinkedQueue<FileDOD> writeQueue;
+    private Lock writeLock = new ReentrantLock();
+    private String fileLocation = null;
     //FileDOD fileRef = null;
-    int lineNum;
+    private int lineNum;
 
     public LineNode(int lineNum, String fileLocation){
+        currFile = new AtomicReference<FileDOD>(null);
+        setup(lineNum, fileLocation);
+    }
+
+    public LineNode(int lineNum, String fileLocation, String existingName){
+
+        FileDOD ref = new FileDOD(fileLocation + "/" + existingName);
+        currFile = new AtomicReference<FileDOD>(ref);
+        setup(lineNum, fileLocation);
+    }
+    private void setup(int lineNum, String fileLocation){
         this.lineNum = lineNum;
         writeQueue = new ConcurrentLinkedQueue<FileDOD>();
         //Path to write location
@@ -31,6 +41,11 @@ public class LineNode {
     public String getCurrentFileLocation() {
         FileDOD copyFileRef = currFile.get();
         return copyFileRef.getFileName();
+    }
+
+    //should only be called once we know all threads are done reading.
+    private void validateIntegrity(){
+        //cleanup unused files after opening the file
     }
 
     public void write(String contents){

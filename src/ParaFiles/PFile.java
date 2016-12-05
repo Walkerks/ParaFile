@@ -4,10 +4,12 @@ package ParaFiles; /**
  */
 
 
+import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 import ParaFiles.ParaStructure.LineNode;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.io.FileWriter;
 import java.nio.file.Files;
 
 import java.io.File;
@@ -43,8 +45,24 @@ public class PFile {
     private void setup(){
         //read in the context File
         fileMap = new ConcurrentHashMap<>(hashInitCap, hashLoadFactor, numThreadsAvail);
+        Scanner myReader = null;
+        int numLines = 0;
+        try{
+            myReader= new Scanner(contextFile);
+            if(myReader.hasNext()) {
+                numLines = Integer.parseInt(myReader.nextLine());
+                for (int i = 0; i < numLines; i++) {
+                    String fileName = myReader.nextLine();
+                    LineNode generatedNode = new LineNode(i, chunksDir.getAbsolutePath(), fileName);
+                    fileMap.put(i, generatedNode);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //TODO: lines should be read in from the conxt file
-        lineCount = new AtomicInteger(-1);
+        lineCount = new AtomicInteger(numLines);
     }
 
     public PFile(String fileName) throws IOException {
@@ -72,16 +90,37 @@ public class PFile {
     public void close() {
         try {
             closeLock.writeLock().lock();
-            //make sure all the readers and writers are done
-            int numLines = lineCount.get();
-            for(int i = 0; i <= numLines; i++){
-                //TODO this
-            }
+            saveContext();
             System.gc();
         } finally {
             closeLock.writeLock().unlock();
         }
 
+    }
+
+    private void saveContext(){
+        FileWriter myWriter = null;
+        try{
+            myWriter = new FileWriter(contextFile);
+            //make sure all the readers and writers are done
+            int numLines = lineCount.get();
+            myWriter.write(String.valueOf(numLines));
+            for(int i = 0; i < numLines; i++){
+                //get the node
+                LineNode node = fileMap.get(i);
+                //get the files name
+                String nodeFileName = node.getCurrentFileLocation();
+                //write the file name to the settings
+                myWriter.write("\n");
+                myWriter.write(nodeFileName);
+            }
+            //Make sure it's written to disk
+            myWriter.flush();
+            //close
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //reads the entire list
@@ -128,7 +167,7 @@ public class PFile {
             //get the number of lines we currently have
             int lineNum = lineCount.get();
             //check to see if their line number is above the number of lines we have
-            if(lineNumber > lineNum){
+            if(lineNumber > lineNum-1){
                 throw new IndexOutOfBoundsException();
             }
             //otherwise get the line
