@@ -3,16 +3,12 @@ package ParaFileBenchmarks;
 import ParaFiles.PFile;
 
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created by Walker on 11/8/2016.
+ * Created by Walker on 12/5/2016.
  */
-public class PFileTestThreadLongWrite extends Thread implements ThreadId{
+public class PFileTestThreadReadandWrite extends Thread implements ThreadId{
     private static int ID_GEN = 0;
 
     private PFile pFile;
@@ -21,35 +17,44 @@ public class PFileTestThreadLongWrite extends Thread implements ThreadId{
     private String testString;
     private int bytesPerTestString;// = testString.getBytes(StandardCharsets.UTF_8).length;
     private long testTime;
-    private int numWrites;
+    private int readWrites;
+    private int max_Index;
 
 
 
-    public PFileTestThreadLongWrite(PFile pFile, int numWrites, String testString) {
+    public PFileTestThreadReadandWrite(PFile pFile, int readWrites, String testString, int max_Index) {
         id = ID_GEN++;
         numberOfTries = 0;
         this.pFile = pFile;
-        this.numWrites = numWrites;
+        this.readWrites = readWrites;
         this.testString = testString;
+        this.max_Index = max_Index;
         //testTime = time;
-}
+    }
 
     @Override
     public void run() {
         long start;
         long end;
         bytesPerTestString = testString.getBytes(StandardCharsets.UTF_8).length;
+        int randReadOrWrite = 0;
         start = System.currentTimeMillis();
         //test goes here
-        for(int i = 0; i < numWrites; i++){
-            pFile.write(testString);
+        for(int i = 0; i < readWrites; i++){
+            randReadOrWrite = getRand();
+            if(randReadOrWrite == 0){
+                pFile.write(testString, getRandIndex());
+            } else{
+                pFile.read(getRandIndex());
+            }
+
         }
         end = System.currentTimeMillis();
         testTime = end-start;
     }
 
     public double getBytesPerSecond(){
-        return (bytesPerTestString * numWrites) / ((testTime/1000) * 1.0);
+        return (bytesPerTestString * readWrites) / ((testTime/1000) * 1.0);
     }
 
     public int getThreadId(){
@@ -58,8 +63,11 @@ public class PFileTestThreadLongWrite extends Thread implements ThreadId{
     public void setID_GEB(int start){
         ID_GEN = start;
     }
+    private int getRandIndex(){
+        return ThreadLocalRandom.current().nextInt(0, max_Index+1);
+    }
     private int getRand(){
         //http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
-        return ThreadLocalRandom.current().nextInt(0, 80000+1);
+        return ThreadLocalRandom.current().nextInt(0, 1+1);
     }
 }

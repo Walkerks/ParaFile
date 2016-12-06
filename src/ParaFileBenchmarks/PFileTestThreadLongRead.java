@@ -3,16 +3,12 @@ package ParaFileBenchmarks;
 import ParaFiles.PFile;
 
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created by Walker on 11/8/2016.
+ * Created by Walker on 12/5/2016.
  */
-public class PFileTestThreadLongWrite extends Thread implements ThreadId{
+public class PFileTestThreadLongRead extends Thread implements ThreadId{
     private static int ID_GEN = 0;
 
     private PFile pFile;
@@ -21,35 +17,35 @@ public class PFileTestThreadLongWrite extends Thread implements ThreadId{
     private String testString;
     private int bytesPerTestString;// = testString.getBytes(StandardCharsets.UTF_8).length;
     private long testTime;
-    private int numWrites;
+    private int startLine;
+    private int endLine;
 
 
-
-    public PFileTestThreadLongWrite(PFile pFile, int numWrites, String testString) {
+    public PFileTestThreadLongRead(PFile pFile, int startLine, int endLine, int bytesPerTestString) {
         id = ID_GEN++;
         numberOfTries = 0;
         this.pFile = pFile;
-        this.numWrites = numWrites;
-        this.testString = testString;
+        this.startLine = startLine;
+        this.endLine = endLine;
+        this.bytesPerTestString = bytesPerTestString;
         //testTime = time;
-}
+    }
 
     @Override
     public void run() {
         long start;
         long end;
-        bytesPerTestString = testString.getBytes(StandardCharsets.UTF_8).length;
         start = System.currentTimeMillis();
         //test goes here
-        for(int i = 0; i < numWrites; i++){
-            pFile.write(testString);
+        for(int i = startLine; i <= endLine; i++){
+            pFile.read(i);
         }
         end = System.currentTimeMillis();
         testTime = end-start;
     }
 
     public double getBytesPerSecond(){
-        return (bytesPerTestString * numWrites) / ((testTime/1000) * 1.0);
+        return (bytesPerTestString * (endLine-startLine + 1)) / ((testTime/1000) * 1.0);
     }
 
     public int getThreadId(){
