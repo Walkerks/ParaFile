@@ -48,8 +48,8 @@ public class PFileTestThreadLongWrite extends Thread implements ThreadId{
         testTime = end-start;
     }
 
-    public double getBytesPerSecond(){
-        return (bytesPerTestString * numWrites) / ((testTime/1000) * 1.0);
+    public long getBytesPerSecond(){
+        return (bytesPerTestString * numWrites) / ((testTime/1000));
     }
 
     public int getThreadId(){

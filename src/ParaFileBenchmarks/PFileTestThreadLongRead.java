@@ -44,8 +44,8 @@ public class PFileTestThreadLongRead extends Thread implements ThreadId{
         testTime = end-start;
     }
 
-    public double getBytesPerSecond(){
-        return (bytesPerTestString * (endLine-startLine + 1)) / ((testTime/1000) * 1.0);
+    public long getBytesPerSecond(){
+        return (bytesPerTestString * (endLine-startLine + 1)) / ((testTime/1000));
     }
 
     public int getThreadId(){

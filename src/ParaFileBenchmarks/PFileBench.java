@@ -20,18 +20,18 @@ public class PFileBench {
     private static final int MAX_THREAD_COUNT = 16;
     //Needs to be even
     private static final int NUMBER_WRITES_PER_THREAD = 10000;
-    private static final int BYTES_PER_THREAD = 4096;
+    private static final int BYTES_PER_THREAD = 4096*5;
     public static void main(String[] args) {
         String testString = "";
         PFile file = null;
         //open a new file
         try {
             //create our PFile
-            file = new PFile("C:/Users/Walker/GoogleDrive/VT/Third Year/test10");
+            file = new PFile("C:/Users/Walker/GoogleDrive/VT/Third Year/test16");
         } catch (IOException e) {
                 e.printStackTrace();
         }
-        double totalBytesPerSecond = 0;
+        long totalBytesPerSecond = 0;
         int THREAD_COUNT = 8;
         for(int i = 0; i < BYTES_PER_THREAD ; i++ ){
             testString = testString + "d";
@@ -44,7 +44,7 @@ public class PFileBench {
         }
 
         for(int t=0; t<THREAD_COUNT; t++) {
-            threads[t].start();
+           threads[t].start();
         }
 
 
@@ -60,6 +60,7 @@ public class PFileBench {
         threads[0].setID_GEB(0);
         System.out.println( " Wrote at " + String.valueOf(totalBytesPerSecond) + " bytes per second with " +
             String.valueOf(THREAD_COUNT) + " threads");
+        totalBytesPerSecond = 0;
 
         PFileTestThreadLongRead[] threadsP = new PFileTestThreadLongRead[THREAD_COUNT];
         int index1 = 0;
@@ -69,6 +70,7 @@ public class PFileBench {
             threadsP[t] = new PFileTestThreadLongRead(file, index1, index2, BYTES_PER_THREAD );
             index1 = index2+1;
         }
+
 
         for(int t=0; t<THREAD_COUNT; t++) {
             threadsP[t].start();
@@ -82,42 +84,20 @@ public class PFileBench {
                 e.printStackTrace();
             }
             //System.out.println(threads[t].getElapsedTime());
-            totalBytesPerSecond += threads[t].getBytesPerSecond();
+            totalBytesPerSecond += threadsP[t].getBytesPerSecond();
         }
         threads[0].setID_GEB(0);
         System.out.println( " Read at " + String.valueOf(totalBytesPerSecond) + " bytes per second with " +
                 String.valueOf(THREAD_COUNT) + " threads");
 
-        PFileTestThreadReadandWrite[] threadsRW = new PFileTestThreadReadandWrite[THREAD_COUNT];
-
-        for(int t=0; t<THREAD_COUNT; t++) {
-            threadsRW[t] = new PFileTestThreadReadandWrite(file, 5000, testString, (NUMBER_WRITES_PER_THREAD*THREAD_COUNT - 1));
-        }
-
-        for(int t=0; t<THREAD_COUNT; t++) {
-            threadsRW[t].start();
-        }
-
-
-        for(int t=0; t<THREAD_COUNT; t++) {
-            try {
-                threadsRW[t].join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            //System.out.println(threads[t].getElapsedTime());
-            totalBytesPerSecond += threads[t].getBytesPerSecond();
-        }
-        threads[0].setID_GEB(0);
-        System.out.println( " Read Writes at " + String.valueOf(totalBytesPerSecond) + " bytes per second with " +
-                String.valueOf(THREAD_COUNT) + " threads");
-
+        totalBytesPerSecond = 0;
 
         for(THREAD_COUNT = 2; THREAD_COUNT <= MAX_THREAD_COUNT; THREAD_COUNT = THREAD_COUNT + 2 ) {
+            totalBytesPerSecond = 0;
             PFileTestThreadReadandWrite[] threadsRWT = new PFileTestThreadReadandWrite[THREAD_COUNT];
 
             for(int t=0; t<THREAD_COUNT; t++) {
-                threadsRWT[t] = new PFileTestThreadReadandWrite(file, 5000, testString, (NUMBER_WRITES_PER_THREAD*THREAD_COUNT - 1));
+                threadsRWT[t] = new PFileTestThreadReadandWrite(file, 5000, testString, 79999);
             }
 
             for(int t=0; t<THREAD_COUNT; t++) {
@@ -132,9 +112,9 @@ public class PFileBench {
                     e.printStackTrace();
                 }
                 //System.out.println(threads[t].getElapsedTime());
-                totalBytesPerSecond += threads[t].getBytesPerSecond();
+                totalBytesPerSecond += threadsRWT[t].getBytesPerSecond();
             }
-            threads[0].setID_GEB(0);
+            threadsRWT[0].setID_GEB(0);
             System.out.println( " Read Writes at " + String.valueOf(totalBytesPerSecond) + " bytes per second with " +
                     String.valueOf(THREAD_COUNT) + " threads");
         }

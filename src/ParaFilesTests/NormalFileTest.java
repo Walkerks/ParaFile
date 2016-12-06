@@ -30,22 +30,24 @@ public class NormalFileTest {
         long writeStartTime = System.currentTimeMillis();
         writeToFile(content, file, numLines);
         long writeEndTime = System.currentTimeMillis();
-        long writeDuration = (writeEndTime - writeStartTime);
+        double writeDuration = (writeEndTime - writeStartTime);
         System.out.println("Write Execution Time: " + writeDuration);
+        System.out.println((writeDuration/1000));
+        System.out.println("Bytes per second: " + (BYTES_PER_LINE*80000)/((writeDuration/1000)*1.0));
 
         long readStartTime = System.currentTimeMillis();
         readFromFile(file);
         long readEndTime = System.currentTimeMillis();
         long readDuration = (readEndTime - readStartTime);
         System.out.println("Read Execution Time: " + readDuration);
-
+        System.out.println("Bytes per second: " + (BYTES_PER_LINE*80000)/(readDuration/1000));
 
         long readWriteStartTime = System.currentTimeMillis();
         readAndWrite(content, file, numLines, totalReadWriteLoops);
         long readWriteEndTime = System.currentTimeMillis();
         long readWriteDuration = (readWriteEndTime - readWriteStartTime);
         System.out.println("Read/Write Execution time: " + readWriteDuration);
-
+        System.out.println("Bytes per second: " + (BYTES_PER_LINE*totalReadWriteLoops)/(readDuration/1000));
     }
 
     private static void writeToFile(String content, String fileName, int loops) {

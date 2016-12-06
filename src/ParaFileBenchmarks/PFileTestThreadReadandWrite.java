@@ -53,8 +53,8 @@ public class PFileTestThreadReadandWrite extends Thread implements ThreadId{
         testTime = end-start;
     }
 
-    public double getBytesPerSecond(){
-        return (bytesPerTestString * readWrites) / ((testTime/1000) * 1.0);
+    public long getBytesPerSecond(){
+        return (bytesPerTestString * readWrites) / ((testTime/1000));
     }
 
     public int getThreadId(){
