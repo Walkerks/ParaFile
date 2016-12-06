@@ -21,9 +21,10 @@ Results should look like
  Read Writes at 13764631 bytes per second with 16 threads
 
 To run the NormalFileBench run java ParaFileBenchmarks.NormalFileBench from the src dir.
-Write Execution Time: 751.0
-Bytes per second: 4.362183754993342E8
-Read Execution Time: 1208
-Bytes per second: 327600000
-Read/Write Execution time: 1032578
-Bytes per second: 4095000
+ Results should look like
+ Write Execution Time: 751.0
+ Bytes per second: 4.362183754993342E8
+ Read Execution Time: 1208
+ Bytes per second: 327600000
+ Read/Write Execution time: 1032578
+ Bytes per second: 4095000
