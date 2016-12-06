@@ -1,0 +1,29 @@
+To run the PFileBench you first need to configure a location:
+Change the PFILEPATH constant in ParaFileBenchmarks.PFileBench.java
+    The file path should be to a folder that doesn't currently  exist
+
+To build the project run:
+find -name "*.java" > sources.txt
+$ javac @sources.txt
+
+
+To run the PFileBench run java ParaFileBenchmarks.PFileBench from the src dir.
+Results should look like
+ Wrote at 1575384 bytes per second with 8 threads
+ Read at 279893331 bytes per second with 8 threads
+ Read Writes at 13653332 bytes per second with 2 threads
+ Read Writes at 20480000 bytes per second with 4 threads
+ Read Writes at 20479998 bytes per second with 6 threads
+ Read Writes at 23405712 bytes per second with 8 threads
+ Read Writes at 18618180 bytes per second with 10 threads
+ Read Writes at 18904608 bytes per second with 12 threads
+ Read Writes at 17769410 bytes per second with 14 threads
+ Read Writes at 13764631 bytes per second with 16 threads
+
+To run the NormalFileBench run java ParaFileBenchmarks.NormalFileBench from the src dir.
+Write Execution Time: 751.0
+Bytes per second: 4.362183754993342E8
+Read Execution Time: 1208
+Bytes per second: 327600000
+Read/Write Execution time: 1032578
+Bytes per second: 4095000
