@@ -14,28 +14,34 @@ import java.util.Random;
  * Created by Austin on 12/5/2016.
  */
 public class NormalFileTest {
+    private static final int BYTES_PER_LINE = 4095;
+
+
     public static void main (String[] args) {
-        String content = "Go Hokies!\n";
-        String newContent = "GOBBLE GOBBLE\n";
+
+        String content = "";
+        for(int i = 0; i < BYTES_PER_LINE ; i++ ){
+            content = content + "d";
+        }
         String file = "./NormalFileTest.txt";
         int numLines = 80000;
-        int totalReadWriteLoops = 160000;
+        int totalReadWriteLoops = 1000;
 
         long writeStartTime = System.currentTimeMillis();
         writeToFile(content, file, numLines);
         long writeEndTime = System.currentTimeMillis();
-        long readDuration = (writeEndTime - writeStartTime);
-        System.out.println("Write Execution Time: " + readDuration);
+        long writeDuration = (writeEndTime - writeStartTime);
+        System.out.println("Write Execution Time: " + writeDuration);
 
         long readStartTime = System.currentTimeMillis();
         readFromFile(file);
         long readEndTime = System.currentTimeMillis();
-        long writeDuration = (readEndTime - readStartTime);
-        System.out.println("Read Execution Time: " + writeDuration);
+        long readDuration = (readEndTime - readStartTime);
+        System.out.println("Read Execution Time: " + readDuration);
 
 
         long readWriteStartTime = System.currentTimeMillis();
-        readAndWrite(newContent, file, numLines, totalReadWriteLoops);
+        readAndWrite(content, file, numLines, totalReadWriteLoops);
         long readWriteEndTime = System.currentTimeMillis();
         long readWriteDuration = (readWriteEndTime - readWriteStartTime);
         System.out.println("Read/Write Execution time: " + readWriteDuration);
@@ -47,6 +53,7 @@ public class NormalFileTest {
         try (BufferedWriter writer = Files.newBufferedWriter(file)){
             for(int i = 0; i < loops; i++) {
                 writer.write(content);
+                writer.newLine();
             }
         } catch (IOException x) {
             System.out.println("error writing to file");
