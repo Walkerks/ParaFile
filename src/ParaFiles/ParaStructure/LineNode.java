@@ -62,11 +62,11 @@ public class LineNode {
         //Wait until this thread is the first in the queue
         synchronized (currFile) {
             while (newFile != writeQueue.peek()) {
-                /*try {
-                    currFile.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
+                //try {
+                //    currFile.wait();
+                //} catch (InterruptedException e) {
+                //    e.printStackTrace();
+                //}
             }
             old = currFile.get();
             currFile.set(newFile);
