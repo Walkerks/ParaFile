@@ -21,13 +21,14 @@ public class PFileBench {
     //Needs to be even
     private static final int NUMBER_WRITES_PER_THREAD = 10000;
     private static final int BYTES_PER_THREAD = 4096*5;
+    private static final String PFILEPATH = "C:/Users/Walker/GoogleDrive/VT/Third Year/test16";
     public static void main(String[] args) {
         String testString = "";
         PFile file = null;
         //open a new file
         try {
             //create our PFile
-            file = new PFile("C:/Users/Walker/GoogleDrive/VT/Third Year/test16");
+            file = new PFile(PFILEPATH);
         } catch (IOException e) {
                 e.printStackTrace();
         }

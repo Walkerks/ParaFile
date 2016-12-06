@@ -1,4 +1,4 @@
-package ParaFilesTests;
+package ParaFileBenchmarks;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Austin on 12/5/2016.
  */
-public class NormalFileTest {
+public class NormalFileBench {
     private static final int BYTES_PER_LINE = 4095;
 
 
@@ -32,7 +32,6 @@ public class NormalFileTest {
         long writeEndTime = System.currentTimeMillis();
         double writeDuration = (writeEndTime - writeStartTime);
         System.out.println("Write Execution Time: " + writeDuration);
-        System.out.println((writeDuration/1000));
         System.out.println("Bytes per second: " + (BYTES_PER_LINE*80000)/((writeDuration/1000)*1.0));
 
         long readStartTime = System.currentTimeMillis();
