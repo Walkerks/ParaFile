@@ -21,7 +21,7 @@ public class PFileBench {
     //Needs to be even
     private static final int NUMBER_WRITES_PER_THREAD = 10000;
     private static final int BYTES_PER_THREAD = 4096*5;
-    private static final String PFILEPATH = "C:/Users/Walker/GoogleDrive/VT/Third Year/test16";
+    private static final String PFILEPATH = "C:/Users/Walker/GoogleDrive/VT/Third Year/test3";
     public static void main(String[] args) {
         String testString = "";
         PFile file = null;

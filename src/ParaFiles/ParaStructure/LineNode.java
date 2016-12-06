@@ -60,7 +60,7 @@ public class LineNode {
         //write to the file
         newFile.write(contents);
         //Wait until this thread is the first in the queue
-        synchronized (currFile) {
+        //synchronized (currFile) {
             while (newFile != writeQueue.peek()) {
                 //try {
                 //    currFile.wait();
@@ -73,7 +73,7 @@ public class LineNode {
             writeQueue.poll();
             //tell all the other threads you're done
             //currFile.notifyAll();
-        }
+        //}
         //mark the old file to delete itself onces all threads no longer have reference
         if(old != null){
             old.delOnGarb();
