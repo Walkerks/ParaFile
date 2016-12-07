@@ -15,7 +15,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LineNode {
     private final AtomicReference<FileDOD> currFile;
     private ConcurrentLinkedQueue<FileDOD> writeQueue;
-    private Lock writeLock = new ReentrantLock();
     private String fileLocation = null;
     //FileDOD fileRef = null;
     private int lineNum;
@@ -43,11 +42,6 @@ public class LineNode {
         return copyFileRef.getFileName();
     }
 
-    //should only be called once we know all threads are done reading.
-    private void validateIntegrity(){
-        //cleanup unused files after opening the file
-    }
-
     public void write(String contents){
         FileDOD old = null;
         //create a new file name
@@ -60,20 +54,12 @@ public class LineNode {
         //write to the file
         newFile.write(contents);
         //Wait until this thread is the first in the queue
-        //synchronized (currFile) {
-            while (newFile != writeQueue.peek()) {
-                //try {
-                //    currFile.wait();
-                //} catch (InterruptedException e) {
-                //    e.printStackTrace();
-                //}
-            }
-            old = currFile.get();
-            currFile.set(newFile);
-            writeQueue.poll();
-            //tell all the other threads you're done
-            //currFile.notifyAll();
-        //}
+        while (newFile != writeQueue.peek());
+        old = currFile.get();
+        currFile.set(newFile);
+        writeQueue.poll();
+
+
         //mark the old file to delete itself onces all threads no longer have reference
         if(old != null){
             old.delOnGarb();
