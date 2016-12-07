@@ -8,14 +8,6 @@ import java.io.IOException;
  * Created by Walker on 12/4/2016.
  */
 
-//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
-       /* for(int i=0; i<=50; i++) {
-            randomNum = randGenerator.nextInt((99 - 0) + 1) + 0;
-            myList.add(randomNum);
-        }*/
-//start the list half full
-//
-
 public class PFileBench {
     private static final int MAX_THREAD_COUNT = 16;
     //Needs to be even

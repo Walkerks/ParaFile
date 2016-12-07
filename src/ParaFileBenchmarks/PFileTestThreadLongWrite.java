@@ -17,9 +17,8 @@ public class PFileTestThreadLongWrite extends Thread implements ThreadId{
 
     private PFile pFile;
     private int id;
-    private int numberOfTries;
     private String testString;
-    private int bytesPerTestString;// = testString.getBytes(StandardCharsets.UTF_8).length;
+    private int bytesPerTestString;
     private long testTime;
     private int numWrites;
 
@@ -27,11 +26,9 @@ public class PFileTestThreadLongWrite extends Thread implements ThreadId{
 
     public PFileTestThreadLongWrite(PFile pFile, int numWrites, String testString) {
         id = ID_GEN++;
-        numberOfTries = 0;
         this.pFile = pFile;
         this.numWrites = numWrites;
         this.testString = testString;
-        //testTime = time;
 }
 
     @Override

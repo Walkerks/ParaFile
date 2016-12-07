@@ -13,9 +13,8 @@ public class PFileTestThreadLongRead extends Thread implements ThreadId{
 
     private PFile pFile;
     private int id;
-    private int numberOfTries;
     private String testString;
-    private int bytesPerTestString;// = testString.getBytes(StandardCharsets.UTF_8).length;
+    private int bytesPerTestString;
     private long testTime;
     private int startLine;
     private int endLine;
@@ -23,12 +22,10 @@ public class PFileTestThreadLongRead extends Thread implements ThreadId{
 
     public PFileTestThreadLongRead(PFile pFile, int startLine, int endLine, int bytesPerTestString) {
         id = ID_GEN++;
-        numberOfTries = 0;
         this.pFile = pFile;
         this.startLine = startLine;
         this.endLine = endLine;
         this.bytesPerTestString = bytesPerTestString;
-        //testTime = time;
     }
 
     @Override

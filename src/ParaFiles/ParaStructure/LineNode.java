@@ -59,7 +59,6 @@ public class LineNode {
         currFile.set(newFile);
         writeQueue.poll();
 
-
         //mark the old file to delete itself onces all threads no longer have reference
         if(old != null){
             old.delOnGarb();

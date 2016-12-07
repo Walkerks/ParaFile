@@ -13,9 +13,8 @@ public class PFileTestThreadReadandWrite extends Thread implements ThreadId{
 
     private PFile pFile;
     private int id;
-    private int numberOfTries;
     private String testString;
-    private int bytesPerTestString;// = testString.getBytes(StandardCharsets.UTF_8).length;
+    private int bytesPerTestString;
     private long testTime;
     private int readWrites;
     private int max_Index;
@@ -24,7 +23,6 @@ public class PFileTestThreadReadandWrite extends Thread implements ThreadId{
 
     public PFileTestThreadReadandWrite(PFile pFile, int readWrites, String testString, int max_Index) {
         id = ID_GEN++;
-        numberOfTries = 0;
         this.pFile = pFile;
         this.readWrites = readWrites;
         this.testString = testString;
